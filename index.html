@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fit Gym - منيو الأسعار</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap');
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+      color: #fff;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .page {
+      max-width: 1600px;
+      width: 100%;
+      min-height: 100vh;
+      padding: 40px 60px;
+      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+      position: relative;
+      margin: 0 auto;
+    }
+
+    .page::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(255, 0, 150, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(0, 150, 255, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px;
+      border-bottom: 3px solid;
+      border-image: linear-gradient(90deg, transparent, #ff0080, #40e0d0, transparent) 1;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 4em;
+      font-weight: 900;
+      background: linear-gradient(45deg, #ff0080, #ff8c00, #40e0d0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+
+    .subtitle {
+      font-size: 1.4em;
+      color: #b8b8d1;
+      font-weight: 400;
+    }
+
+    .section-title {
+      font-size: 2.2em;
+      font-weight: 700;
+      margin: 50px 0 35px;
+      text-align: center;
+      background: linear-gradient(45deg, #ff0080, #40e0d0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+    }
+
+    .section-title i {
+      margin-left: 8px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+      margin-top: 50px;
+    }
+
+    .pricing-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 35px 25px;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      page-break-inside: avoid;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    /* .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    } */
+
+    .pricing-card:hover::before {
+      opacity: 1;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(255, 0, 128, 0.5);
+      box-shadow: 0 15px 40px rgba(255, 0, 128, 0.4);
+    }
+
+    .pricing-card.featured {
+      background: linear-gradient(135deg, rgba(255, 0, 128, 0.2) 0%, rgba(255, 140, 0, 0.2) 100%);
+      border: 2px solid #ff0080;
+      box-shadow: 0 8px 30px rgba(255, 0, 128, 0.3);
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: -8px;
+      right: 10px;
+      background: linear-gradient(45deg, #ff0080, #ff8c00);
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.7em;
+      box-shadow: 0 3px 10px rgba(255, 0, 128, 0.4);
+    }
+
+    .card-icon {
+      font-size: 3em;
+      text-align: center;
+      margin-bottom: 15px;
+      background: linear-gradient(45deg, #ff0080, #ff8c00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .card-title {
+      font-size: 1.4em;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    .price {
+      font-size: 2.8em;
+      font-weight: 900;
+      text-align: center;
+      margin: 15px 0;
+      background: linear-gradient(45deg, #40e0d0, #ff8c00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .price span {
+      font-size: 0.45em;
+      color: #b8b8d1;
+    }
+
+    .features {
+      list-style: none;
+      margin: 20px 0;
+      font-size: 0.95em;
+    }
+
+    .features li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      color: #d8d8e8;
+    }
+
+    .features li:last-child {
+      border-bottom: none;
+    }
+
+    .features li i {
+      color: #40e0d0;
+      margin-left: 6px;
+      font-size: 1em;
+      min-width: 14px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      font-size: 0.95em;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      background: linear-gradient(45deg, #ff0080, #ff8c00);
+      color: #fff;
+      margin-top: 8px;
+      font-family: 'Cairo', sans-serif;
+      box-shadow: 0 4px 15px rgba(255, 0, 128, 0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 0, 128, 0.5);
+    }
+
+    .sessions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .session-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 35px;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      page-break-inside: avoid;
+      transition: all 0.3s;
+    }
+
+    .session-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(64, 224, 208, 0.5);
+      box-shadow: 0 12px 30px rgba(64, 224, 208, 0.3);
+    }
+
+    .session-title {
+      font-size: 1.4em;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #40e0d0;
+    }
+
+    .session-title i {
+      margin-left: 8px;
+    }
+
+    .session-price {
+      font-size: 2.2em;
+      font-weight: 900;
+      color: #ff8c00;
+      margin: 15px 0;
+    }
+
+    .session-desc {
+      font-size: 1em;
+      color: #b8b8d1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 6mm 0 0;
+      border-top: 2px solid rgba(255, 255, 255, 0.2);
+      margin-top: auto;
+      position: relative;
+    }
+
+    .footer-title {
+      font-size: 1.4em;
+      font-weight: 700;
+      margin-bottom: 10px;
+      background: linear-gradient(45deg, #ff0080, #40e0d0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 6mm;
+      flex-wrap: wrap;
+      margin: 8px 0;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9em;
+      color: #e0e0e0;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 5px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-item i {
+      color: #ff0080;
+      font-size: 1.2em;
+    }
+
+    .contact-item-time {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.85em;
+      color: #e0e0e0;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      line-height: 1.6;
+    }
+
+    .contact-item-time i {
+      color: #ff0080;
+      font-size: 1.3em;
+      margin-bottom: 4px;
+    }
+
+    .footer-note {
+      margin-top: 10px;
+      font-size: 0.95em;
+      color: #b8b8d1;
+      font-weight: 600;
+    }
+
+    .print-btn-container {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+    }
+
+    .print-btn {
+      background: linear-gradient(45deg, #ff0080, #ff8c00);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 12px;
+      font-size: 1.1em;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 5px 20px rgba(255, 0, 128, 0.4);
+      font-family: 'Cairo', sans-serif;
+      transition: all 0.3s;
+    }
+
+    .print-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 0, 128, 0.6);
+    }
+
+    .print-btn i {
+      margin-left: 8px;
+    }
+
+    @media print {
+      body {
+        background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+        width: 210mm;
+        margin: 0 auto;
+      }
+
+      .print-btn-container {
+        display: none;
+      }
+
+      .page {
+        page-break-after: always;
+        margin: 0;
+        width: 210mm;
+        padding: 15mm;
+      }
+
+      .page:last-child {
+        page-break-after: auto;
+      }
+
+      .pricing-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4mm;
+      }
+
+      .sessions-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4mm;
+      }
+
+      h1 {
+        font-size: 2.5em;
+      }
+
+      .section-title {
+        font-size: 1.8em;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      body {
+        width: 100%;
+        padding: 0;
+      }
+
+      .page {
+        width: 100%;
+        min-height: auto;
+        padding: 25px 20px;
+      }
+
+      h1 {
+        font-size: 2.5em;
+      }
+
+      .subtitle {
+        font-size: 1.1em;
+      }
+
+      .section-title {
+        font-size: 1.8em;
+        margin: 35px 0 25px;
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .sessions-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .pricing-card {
+        padding: 25px 20px;
+      }
+
+      .card-icon {
+        font-size: 2.5em;
+      }
+
+      .card-title {
+        font-size: 1.3em;
+      }
+
+      .price {
+        font-size: 2.5em;
+      }
+
+      .features {
+        font-size: 0.95em;
+      }
+
+      .session-card {
+        padding: 25px;
+      }
+
+      .session-title {
+        font-size: 1.3em;
+      }
+
+      .session-price {
+        font-size: 2em;
+      }
+
+      .contact-info {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+      }
+
+      .contact-item,
+      .contact-item-time {
+        font-size: 0.95em;
+        width: 100%;
+        max-width: 400px;
+        justify-content: center;
+      }
+
+      .print-btn-container {
+        position: static;
+        text-align: center;
+        padding: 20px;
+      }
+    }
+
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+      .page {
+        padding: 40px 30px;
+      }
+
+      .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+      }
+
+      .sessions-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      h1 {
+        font-size: 3.2em;
+      }
+    }
+
+    @media print {
+      body {
+        width: 210mm;
+        margin: 0 auto;
+      }
+
+      .page {
+        width: 210mm;
+        padding: 15mm;
+      }
+
+      .pricing-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4mm;
+      }
+
+      .sessions-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4mm;
+      }
+
+      h1 {
+        font-size: 2.5em;
+      }
+
+      .section-title {
+        font-size: 1.8em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="print-btn-container">
+    <button class="print-btn" onclick="window.print()">
+      <i class="fas fa-print"></i>
+      اطبع المنيو
+    </button>
+  </div>
+
+  <div class="page">
+    <header>
+      <h1><i class="fas fa-dumbbell"></i> FIT GYM</h1>
+      <p class="subtitle">ابدأ رحلتك نحو اللياقة المثالية</p>
+    </header>
+
+    <h2 class="section-title"><i class="fas fa-crown"></i> باقات الاشتراكات</h2>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="card-icon"><i class="fas fa-calendar-day"></i></div>
+        <h3 class="card-title">يوم Fitness</h3>
+        <div class="price">15 <span>جنيه</span></div>
+        <ul class="features">
+          <li><i class="fas fa-check-circle"></i> دخول ليوم واحد</li>
+          <li><i class="fas fa-check-circle"></i> استخدام جميع الأجهزة ماعدا اجهزه الكارديو</li>
+        </ul>
+        <button class="btn">اشترك الآن</button>
+      </div>
+
+      <div class="pricing-card">
+        <div class="card-icon"><i class="fas fa-calendar-day"></i></div>
+        <h3 class="card-title">يوم Bodybuilding</h3>
+        <div class="price">30 <span>جنيه</span></div>
+        <ul class="features">
+          <li><i class="fas fa-check-circle"></i> دخول ليوم واحد</li>
+          <li><i class="fas fa-check-circle"></i> استخدام جميع الأجهزة</li>
+        </ul>
+        <button class="btn">اشترك الآن</button>
+      </div>
+
+      <div class="pricing-card">
+        <div class="card-icon"><i class="fas fa-calendar-week"></i></div>
+        <h3 class="card-title">نص شهر Bodybuilding</h3>
+        <div class="price">200 <span>جنيه</span></div>
+        <ul class="features">
+          <li><i class="fas fa-check-circle"></i> 15 حصة</li>
+          <li><i class="fas fa-check-circle"></i> استخدام جميع الأجهزة ماعدا اجهزه الكارديو</li>
+        </ul>
+        <button class="btn">اشترك الآن</button>
+      </div>
+
+      <div class="pricing-card">
+        <div class="card-icon"><i class="fas fa-calendar-week"></i></div>
+        <h3 class="card-title">نص شهر Fitness</h3>
+        <div class="price">350 <span>جنيه</span></div>
+        <ul class="features">
+          <li><i class="fas fa-check-circle"></i> 15 حصة</li>
+          <li><i class="fas fa-check-circle"></i> استخدام جميع الأجهزة</li>
+        </ul>
+        <button class="btn">اشترك الآن</button>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="featured-badge">الأكثر طلباً</div>
+        <div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
+        <h3 class="card-title">شهري Bodybuilding</h3>
+        <div class="price">350 <span>جنيه</span></div>
+        <ul class="features">
+          <li><i class="fas fa-check-circle"></i> 30 يوم كاملة</li>
+          <li><i class="fas fa-check-circle"></i> استخدام جميع الأجهزة ماعدا اجهزه الكارديو</li>
+          <li><i class="fas fa-check-circle"></i> برنامج تمارين شخصي</li>
+          <li><i class="fas fa-check-circle"></i> استشارة تغذية مجانية</li>
+        </ul>
+        <button class="btn">اشترك الآن</button>
+      </div>
+
+      <div class="pricing-card">
+        <div class="card-icon"><i class="fas fa-calendar-week"></i></div>
+        <h3 class="card-title">شهري Fitness</h3>
+        <div class="price">500 <span>جنيه</span></div>
+        <ul class="features">
+          <li><i class="fas fa-check-circle"></i> 30 يوم كاملة</li>
+          <li><i class="fas fa-check-circle"></i> استخدام جميع الأجهزة</li>
+          <li><i class="fas fa-check-circle"></i> برنامج تمارين شخصي</li>
+          <li><i class="fas fa-check-circle"></i> استشارة تغذية مجانية</li>
+        </ul>
+        <button class="btn">اشترك الآن</button>
+      </div>
+
+      <div class="pricing-card">
+        <div class="card-icon"><i class="fas fa-calendar"></i></div>
+        <h3 class="card-title">اشتراك 3 أشهر</h3>
+        <div class="price">1200 <span>جنيه</span></div>
+        <ul class="features">
+          <li><i class="fas fa-check-circle"></i> 90 يوم تدريب</li>
+          <li><i class="fas fa-check-circle"></i> جميع المرافق</li>
+          <li><i class="fas fa-check-circle"></i> متابعة شهرية مع مدرب</li>
+          <li><i class="fas fa-check-circle"></i> برنامج تمارين شخصي</li>
+          <li><i class="fas fa-check-circle"></i> استشارة تغذية مجانية</li>
+        </ul>
+        <button class="btn">اشترك الآن</button>
+      </div>
+
+      <div class="pricing-card">
+        <div class="card-icon"><i class="fas fa-trophy"></i></div>
+        <h3 class="card-title">اشتراك 6 أشهر</h3>
+        <div class="price">2500 <span>جنيه</span></div>
+        <ul class="features">
+          <li><i class="fas fa-check-circle"></i> 180 يوم تحول كامل</li>
+          <li><i class="fas fa-check-circle"></i> كل المميزات VIP</li>
+          <li><i class="fas fa-check-circle"></i> مدرب شخصي مرتين أسبوعياً</li>
+          <li><i class="fas fa-check-circle"></i> برنامج تمارين شخصي</li>
+          <li><i class="fas fa-check-circle"></i> برنامج غذائي متكامل</li>
+          <li><i class="fas fa-check-circle"></i> متابعة دورية كاملة</li>
+        </ul>
+        <button class="btn">اشترك الآن</button>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="featured-badge">أفضل قيمة</div>
+        <div class="card-icon"><i class="fas fa-star"></i></div>
+        <h3 class="card-title">اشتراك سنوي</h3>
+        <div class="price">4000 <span>جنيه</span></div>
+        <ul class="features">
+          <li><i class="fas fa-check-circle"></i> 365 يوم لياقة</li>
+          <li><i class="fas fa-check-circle"></i> عضوية VIP كاملة</li>
+          <li><i class="fas fa-check-circle"></i> مدرب شخصي مجاني</li>
+          <li><i class="fas fa-check-circle"></i> برنامج تمارين شخصي</li>
+          <li><i class="fas fa-check-circle"></i> برنامج غذائي شامل</li>
+          <li><i class="fas fa-check-circle"></i> أولوية في الحجز</li>
+        </ul>
+        <button class="btn">اشترك الآن</button>
+      </div>
+    </div>
+
+    <h2 class="section-title"><i class="fas fa-running"></i> الحصص والتدريب الشخصي</h2>
+
+    <div class="sessions-grid">
+      <div class="session-card">
+        <h3 class="session-title"><i class="fas fa-user-tie"></i> حصة مدرب شخصي</h3>
+        <div class="session-price">50 جنيه</div>
+        <p class="session-desc">مدة الحصة: 60 دقيقة</p>
+      </div>
+
+      <div class="session-card">
+        <h3 class="session-title"><i class="fas fa-apple-alt"></i> استشارة تغذية</h3>
+        <div class="session-price">50 جنيه</div>
+        <p class="session-desc">مع أخصائي معتمد</p>
+      </div>
+
+      <div class="session-card">
+        <h3 class="session-title"><i class="fas fa-fire"></i> برنامج شخصي كامل</h3>
+        <div class="session-price">500 جنيه</div>
+        <p class="session-desc">تمارين + تغذية لمدة شهر</p>
+      </div>
+    </div>
+
+    <footer>
+      <h3 class="footer-title">للاستفسار والحجز</h3>
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <span>01012345678</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>امام موقف حورس، المنشاة، سوهاج</span>
+        </div>
+        <div class="contact-item-time">
+          <i class="fas fa-clock"></i>
+          <span>🏋️ رجال: من 3 عصراً - 2 منتصف الليل</span>
+          <span>👩‍🦰 سيدات: من 9 صباحاً - 2.5 ظهراً</span>
+        </div>
+      </div>
+      <p class="footer-note">ابدأ رحلتك اليوم نحو جسم أقوى وحياة أصح 💪</p>
+    </footer>
+  </div>
+</body>
+
+</html>
